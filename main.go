@@ -29,12 +29,6 @@ func main() {
 		}
 	})
 	server := e.Server(":1323")
-
-	// HTTP2 is currently enabled by default in echo.New(). To override TLS handshake errors
-	// you will need to override the TLSConfig for the server so it does not attempt to valudate
-	// the connection using TLS as required by HTTP2
 	server.TLSConfig = nil
-
-	// Graceful shutdown
 	gracehttp.Serve(server)
 }
